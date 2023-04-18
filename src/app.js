@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
 
-dotenv.config()
+dotenv.config();
 
 const app = express();
-const MONGO_URL = process.env.DB_URL
+const MONGO_URL = process.env.DATABASE_URL;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
