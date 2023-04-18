@@ -1,25 +1,21 @@
+// IMPORTS
 const express = require("express");
-const mongoose = require("mongoose");
+const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv");
+const taskRoutes = require("./routes/taskRoutes.js");
+const port = process.env.PORT || 3000;
 
+// .env CALL
 dotenv.config();
 
-const app = express();
-const MONGO_URL = process.env.DATABASE_URL;
-
+// SETUP
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-const taskRoutes = require("./routes/taskRoutes.js");
-
+// ROUTES
 app.use("/tasks", taskRoutes);
 
-mongoose
-  .connect(MONGO_URL)
-  .then(() => {
-    console.log("Conexão com o MongoDB realizada com sucesso.");
-    app.listen(3000);
-  })
-  .catch((error) => console.error(error));
+// SERVER LISTEN
+app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
