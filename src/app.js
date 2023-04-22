@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 // ROUTES
-app.use("/tasks", taskRoutes);
+app.use("/", taskRoutes);
 
 // SERVER LISTEN
 app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
